@@ -1,0 +1,13 @@
+FROM ruby:2.5.1
+
+# Setup the API application
+RUN mkdir /lanebreach-api
+WORKDIR /lanebreach-api
+ADD Gemfile /lanebreach-api/Gemfile
+ADD Gemfile.lock /lanebreach-api/Gemfile.lock
+RUN bundle install
+ADD . /lanebreach-api
+
+ENV RAILS_LOG_TO_STDOUT true
+
+CMD bundle exec sidekiq

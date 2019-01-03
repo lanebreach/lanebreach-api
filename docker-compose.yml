@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  lbdb:
+    image: lanebreach_lbdb
+    container_name: lbdb
+    build:
+      context: ./db
+      dockerfile: Dockerfile
+    ports:
+      - '5432:5432'
+
+  lbapi: &lbapi
+    image: lanebreach_api
+    container_name: lbapi
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    environment:
+      RAILS_DATABASE_HOST: lbdb
+      REDIS_URL: redis://redis:6379
+    volumes:
+      - .:/lanebreach-api
+    ports:
+      - '3000:3000'
+    depends_on:
+      - lbdb
+
+  worker:
+    <<: *lbapi
+    container_name: worker
+    build:
+      context: .
+      dockerfile: Dockerfile.worker
+    image: lanebreach_worker
+    ports: []
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:5.0-alpine
+    container_name: redis

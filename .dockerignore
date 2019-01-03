@@ -1,0 +1,9 @@
+.git
+.gitignore
+tmp
+log
+package.json
+Dockerfile.web
+Dockerfile.worker
+db/Dockerfile
+docker-compose.yml

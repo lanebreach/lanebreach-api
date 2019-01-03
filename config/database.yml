@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgis
+  encoding: unicode
+  username: postgres
+  password:
+  host: <%= ENV.fetch("RAILS_DATABASE_HOST") { 'localhost' } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: <%= ENV.fetch("RAILS_DATABASE_PORT") { 5432 } %>
+
+development:
+  <<: *default
+  password:
+  username: bikelanes
+  database: bikelanes
+  password: bike_pass
+
+production:
+  adapter: postgis
+  encoding: unicode
+  database: <%= ENV['RDS_DB_NAME'] %>
+  username: <%= ENV['RDS_USERNAME'] %>
+  password: <%= ENV['RDS_PASSWORD'] %>
+  host: <%= ENV['RDS_HOSTNAME'] %>
+  port: <%= ENV['RDS_PORT'] %>

@@ -1,0 +1,27 @@
+{
+  "name": "lanebreach-api",
+  "version": "1.0.0",
+  "scripts": {
+    "api": "docker exec -it lbapi bash",
+    "api:console": "docker exec -it lbapi bash -c 'rails console'",
+    "build": "docker-compose -f docker-compose.yml build",
+    "build:db": "docker build -t lbdb ./db/",
+    "db": "docker exec -it lbdb bash -c 'psql bikelanes bikelanes'",
+    "db:reset": "docker-compose -f docker-compose.yml run lbapi bash -c 'bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed'",
+    "db:migrate": "docker-compose -f docker-compose.yml run lbapi bash -c 'rails db:migrate RAILS_ENV=development'",
+    "db:run": "docker run --name lbdb lbdb",
+    "db:seed": "docker-compose -f docker-compose.yml run lbapi bash -c 'rails db:seed RAILS_ENV=development'",
+    "start": "docker-compose -f docker-compose.yml up",
+    "stop": "docker stop $(docker ps -aq)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lanebreach/lanebreach-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lanebreach/lanebreach-api/issues"
+  },
+  "homepage": "https://github.com/lanebreach/lanebreach-api#readme"
+}
