@@ -4,6 +4,8 @@
   "scripts": {
     "api": "docker exec -it lbapi bash",
     "api:console": "docker exec -it lbapi bash -c 'rails console'",
+    "worker": "docker exec -it worker bash",
+    "worker:console": "docker exec -it worker bash -c 'rails console'",
     "build": "docker-compose -f docker-compose.yml build",
     "build:db": "docker build -t lbdb ./db/",
     "db": "docker exec -it lbdb bash -c 'psql bikelanes bikelanes'",
