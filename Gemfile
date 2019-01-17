@@ -34,6 +34,8 @@ gem 'sidekiq-cron'
 gem 'redis'
 gem 'redis-namespace'
 
+gem 'graphql'
+
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
