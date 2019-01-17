@@ -18,7 +18,10 @@ gem 'jbuilder', '~> 2.5'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
+# ActiveRecord helpers:
 gem 'activerecord-postgis-adapter'
+gem 'rgeo-activerecord'
+gem 'rgeo-geojson'
 gem 'activerecord-import'
 
 # Client for working with Open Data resources:
