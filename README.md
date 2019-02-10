@@ -38,11 +38,9 @@ Check your Heroku account to retrieve the password or talk to a maintainer.
 
 ## Deployment
 
-The app lives on [Heroku](https://www.heroku.com/) at https://lane-breach.herokuapp.com/ which you must be logged into to deploy. Make sure to add the heroku remote using `heroku git:remote -a lane-breach`.
+The app lives on [Heroku](https://www.heroku.com/) at https://lane-breach.herokuapp.com/. Any pushes to the `heroku` branch will get automatically deployed, including migrations.
 
-You can push a new version of the app by running `git push -f heroku master`. See the [Git deployment documentation](https://devcenter.heroku.com/articles/git) for further details.
-
-You can run database migrations by running `heroku run rails db:migrate`. You only need to run migrations if you've added a new [database migration](https://edgeguides.rubyonrails.org/active_record_migrations.html).
+To push what's on master onto the heroku branch, you can run `git push origin master:heroku`.
 
 ## Contributing
 
