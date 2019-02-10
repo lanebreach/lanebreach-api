@@ -1,16 +1,18 @@
 class Api::BikewayNetworksController < ApplicationController
   def nearest_network
-    if params[:lat].nil? || params[:long].nil?
-      render json: {'Error': "Must provide 'lat' and 'long' as query parameters."}, status: :unprocessable_entity
-    else
-      bikeway_network = BikewayNetwork.nearest(params[:lat], params[:long], params[:max_distance]).first
-
-      if bikeway_network.nil?
-        render json: nil, status: :ok
-      else
-        render json: bikeway_network.to_json, status: :ok
-      end
-    end
+    query ="query 
+        { 
+          nearest_bikeway_network(lat: #{params[:lat]}, long: #{params[:long]}, max_distance: #{params[:max_distance]}) {
+            id,
+            install_mo,
+            install_yr,
+            streetname,
+            symbology, 
+            dist
+          }
+        }"
+    result = LanebreachApiSchema.execute(query)
+    render json: result["data"]["nearest_bikeway_network"][0]
   end
 
   def show
