@@ -53,6 +53,5 @@ class BikewayNetwork < ApplicationRecord
                   .where("st_DistanceSphere(geom, ST_MakePoint(?, ?)) <= #{meters}", long, lat)
                   .order('dist')
                   .limit(1)
-                  .first
   end
 end

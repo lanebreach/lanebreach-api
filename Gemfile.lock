@@ -68,6 +68,7 @@ GEM
       raabro (~> 1.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    graphql (1.8.13)
     hashie (3.6.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
@@ -139,6 +140,8 @@ GEM
     rgeo-activerecord (6.0.0)
       activerecord (~> 5.0)
       rgeo (~> 1.0)
+    rgeo-geojson (2.1.1)
+      rgeo (>= 1.0.0)
     ruby_dep (1.5.0)
     sidekiq (5.2.3)
       connection_pool (~> 2.2, >= 2.2.2)
@@ -184,6 +187,7 @@ DEPENDENCIES
   api-pagination
   bootsnap (>= 1.1.0)
   byebug
+  graphql
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
@@ -191,6 +195,8 @@ DEPENDENCIES
   rails (~> 5.2.1)
   redis
   redis-namespace
+  rgeo-activerecord
+  rgeo-geojson
   sidekiq
   sidekiq-cron
   soda-ruby
