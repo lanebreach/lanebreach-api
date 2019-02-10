@@ -8,14 +8,9 @@
 
 ### Getting Started
 
-Run `yarn start` at the command line to run the API locally. Be sure you have the Docker agent running.
+Run `yarn build` to build and `yarn start` at the command line to run the API locally. Be sure you have the Docker agent running.
 
-You'll also need to create the database tables the application depends on and seed them with data:
-
-```
-yarn db:migrate
-yarn db:seed
-```
+You'll also need to create the database tables the application depends on and seed them with data `yarn db:reset`.
 
 Finally, make an API request to see if your environment is configured correctly. See [the documentation](https://github.com/lanebreach/lanebreach-api/blob/master/docs.md) if you're looking for a sample request.
 
@@ -43,11 +38,11 @@ Check your Heroku account to retrieve the password or talk to a maintainer.
 
 ## Deployment
 
-The app lives on [Heroku](https://www.heroku.com/) at https://lane-breach.herokuapp.com/ which you must be logged into to deploy. Make sure to add the heroku remote using ```heroku git:remote -a lane-breach```.
+The app lives on [Heroku](https://www.heroku.com/) at https://lane-breach.herokuapp.com/ which you must be logged into to deploy. Make sure to add the heroku remote using `heroku git:remote -a lane-breach`.
 
-You can push a new version of the app by running ```git push -f heroku master```. See the [Git deployment documentation](https://devcenter.heroku.com/articles/git) for further details.
+You can push a new version of the app by running `git push -f heroku master`. See the [Git deployment documentation](https://devcenter.heroku.com/articles/git) for further details.
 
-You can run database migrations by running ```heroku run rails db:migrate```. You only need to run migrations if you've added a new [database migration](https://edgeguides.rubyonrails.org/active_record_migrations.html).
+You can run database migrations by running `heroku run rails db:migrate`. You only need to run migrations if you've added a new [database migration](https://edgeguides.rubyonrails.org/active_record_migrations.html).
 
 ## Contributing
 
