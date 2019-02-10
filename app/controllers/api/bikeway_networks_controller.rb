@@ -12,4 +12,8 @@ class Api::BikewayNetworksController < ApplicationController
       end
     end
   end
+
+  def show
+    @bikeway_network = BikewayNetwork.find(params[:id])
+  end
 end

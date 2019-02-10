@@ -49,14 +49,11 @@ class Sf311Case < ApplicationRecord
     blocked_bike_lane: 'Blocking_Bicycle_Lane'
   }
 
-  scope :bike_lane_blockage, -> { where(service_subtype: SERVICE_SUBTYPES[:blocked_bike_lane]) }
-
   def add_metadata
     Sf311CaseMetadatum.update_metadata(self)
   end
 
   class << self
-
     def ingest_csv_case_data!(case_data_csv)
       # TODO: Figure out a more efficient way to import case records. Currently,
       # each record takes 2 SQL statements to create (1 for the record itself,
@@ -65,7 +62,5 @@ class Sf311Case < ApplicationRecord
         Sf311Case.create!(row.to_h)
       end
     end
-
   end
-
 end

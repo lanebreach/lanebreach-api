@@ -1,0 +1,1 @@
+json.extract! bikeway_network, :id, :install_mo, :install_yr, :symbology, :streetname
