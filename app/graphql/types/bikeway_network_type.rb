@@ -11,6 +11,7 @@ Types::BikewayNetworkType = GraphQL::ObjectType.define do
   field :date_last_, Types::DateTimeType
   field :dir, types.String
   field :direct, types.String
+  field :dist, types.Float
   field :double, types.Float
   field :facility_t, types.String
   field :from_st, types.String
@@ -18,6 +19,7 @@ Types::BikewayNetworkType = GraphQL::ObjectType.define do
   field :geom, Types::PointType
   field :globalid, types.String
   field :greenwave, types.String
+  field :id, types.Float
   field :install_mo, types.Float
   field :install_yr, types.Float
   field :last_edite, types.String
@@ -38,10 +40,7 @@ Types::BikewayNetworkType = GraphQL::ObjectType.define do
   field :time_last_, types.String
   field :to_st, types.String
   field :update_mo, types.Float
-  field :update_yr, types.Float
-
-  # TODO: Figure out if this field needs to be exposed
-  field :dist, Types::PointType
+  field :update_yr, types.Float  
 
   field :sf311_case_metadatum, Types::Sf311CaseMetadatumType
 end
