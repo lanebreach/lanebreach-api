@@ -26,6 +26,18 @@ curl -XGET https://lane-breach.herokuapp.com/api/bikeway_networks?lat=-122.45872
 null
 ```
 
+#### GET /api/bikeway_networks/ID
+
+**request:**
+```
+curl -XGET https://lane-breach.herokuapp.com/api/bikeway_networks/4150
+```
+
+**response:**
+```
+{"id":4150,"install_mo":null,"install_yr":"2003.0","symbology":"BIKE LANE","streetname":"14TH ST"}
+```
+
 ### SF 311 Cases
 
 #### GET /api/sf311_cases
@@ -40,38 +52,43 @@ The default page size is 30 items.
 
 **response:**
 ```
-[
-  {
-    "id": 1,
-    "service_request_id": 9145772,
-    "requested_datetime": "2018-06-16T15:14:02.000Z",
-    "closed_date": "2018-06-16T15:14:09.000Z",
-    "updated_datetime": "2018-06-16T15:14:09.000Z",
-    "status_description": "Closed",
-    "status_notes": "The report has been logged and will help the City collect data on double parking and bike lane violations to determine target areas and future enforcement efforts. Thank you.",
-    "agency_responsible": "Parking Enforcement Review Queue",
-    "service_name": "Parking Enforcement",
-    "service_subtype": "Blocking_Bicycle_Lane",
-    "service_details": "Parking Enforcement",
-    "address": "2927 FOLSOM ST, SAN FRANCISCO, CA, 94110",
-    "supervisor_district": 9,
-    "neighborhoods_sffind_boundaries": "Mission",
-    "police_district": "MISSION",
-    "lat": 37.75041,
-    "long": -122.4138,
-    "point": "POINT (-122.41369887 37.75039981)",
-    "point_city": null,
-    "source": "Mobile/Open311",
-    "point_state": null,
-    "point_address": null,
-    "point_zip": null,
-    "media_url_description": null,
-    "media_url": null,
-    "created_at": "2018-11-24T19:54:31.565Z",
-    "updated_at": "2018-11-24T19:54:31.565Z"
+{
+  "meta": {
+    "current_page": 1,
+    "next_page": 2,
+    "prev_page": null,
+    "total_pages": 12,
+    "total_count": 354,
+    "items_per_page": 30
   },
-  ...
-]
+  "data": [
+    {
+      "id": 375,
+      "service_request_id": 9875356,
+      "requested_datetime": "2018-12-01T00:51:00.000Z",
+      "closed_date": "2018-12-01T00:53:38.000Z",
+      "updated_datetime": "2018-12-01T00:53:38.000Z",
+      "status_description": "Closed",
+      "status_notes": "The report has been logged and will help the City collect data on double parking and bike lane violations to determine target areas and future enforcement efforts. Thank you.",
+      "agency_responsible": "Parking Enforcement Dispatch Queue",
+      "service_name": "Parking Enforcement",
+      "service_subtype": "Blocking_Bicycle_Lane",
+      "service_details": "White - Toyota Camry - NA",
+      "address": "1842 LAKE ST, SAN FRANCISCO, CA, 94121",
+      "supervisor_district": 2,
+      "neighborhoods_sffind_boundaries": "Lake Street",
+      "police_district": "RICHMOND",
+      "lat": 37.78612137,
+      "long": -122.47961426,
+      "source": "Phone",
+      "media_url": null,
+      "meta_data": {
+        "bikeway_network_id": 4277
+      }
+    },
+    ...
+  ]
+}
 ```
 
 #### POST /api/sf311_cases

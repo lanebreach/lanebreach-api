@@ -19,5 +19,6 @@ Rails.application.routes.draw do
     get '/bikeway_networks', to: 'bikeway_networks#nearest_network'
     resources :sf311_case_metadata, only: [:index]
     resources :sf311_cases, only: [:index, :create]
-  end
+    resources :bikeway_networks, only: [:show]
+  end  
 end

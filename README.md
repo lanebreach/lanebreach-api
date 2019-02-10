@@ -21,7 +21,7 @@ The API is currently backed by a [PostgreSQL](https://www.postgresql.org/) datab
 ### Data sources
 
 Most of our data comes from [Open Data SF](https://datasf.org/opendata/). See `db/seeds.rb` and
-`Dockerfile.db` for further details.
+`Dockerfile.db` for further details. The specific Sf 311 case data comes from https://data.sfgov.org/City-Infrastructure/311-Cases/vw6y-z8j6.
 
 ### Local DB
 
