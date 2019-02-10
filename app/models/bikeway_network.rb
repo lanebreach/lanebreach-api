@@ -46,11 +46,10 @@
 class BikewayNetwork < ApplicationRecord
   has_many :sf311_case_metadatum
 
-  def self.nearest(lat, long)
-    meters = 50
-
-    BikewayNetwork.select("id, install_mo, install_yr, symbology, streetname, st_DistanceSphere(geom, ST_MakePoint(#{long}, #{lat})) as dist")
-                  .where("st_DistanceSphere(geom, ST_MakePoint(?, ?)) <= #{meters}", long, lat)
+  def self.nearest(lat, long, max_distance)
+    max_distance ||= 50
+    BikewayNetwork.select("*, st_DistanceSphere(geom, ST_MakePoint(#{long}, #{lat})) as dist")
+                  .where("st_DistanceSphere(geom, ST_MakePoint(?, ?)) <= #{max_distance}", long, lat)
                   .order('dist')
                   .limit(1)
   end
