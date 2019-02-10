@@ -13,7 +13,48 @@ curl -XGET https://lane-breach.herokuapp.com/api/bikeway_networks?lat=37.7467553
 
 **response:**
 ```
-{"id":648,"install_yr":"2010.0","streetname":"LAGUNA HONDA BLVD","symbology":"BIKE LANE","dist":0.00506722}
+{
+  "id": 648,
+  "barrier": null,
+  "biap": "NO",
+  "buffered": "NO",
+  "cnn": "7992201.0",
+  "contraflow": "NO",
+  "date_creat": null,
+  "time_creat": null,
+  "created_us": null,
+  "dir": null,
+  "direct": "2W",
+  "double": "1.0",
+  "facility_t": "CLASS II",
+  "from_st": "WOODSIDE AV",
+  "fy": "0.0",
+  "globalid": "{BB75CA5B-E5CC-4D8A-86B6-F8FB936A34F1}",
+  "greenwave": "NO",
+  "install_mo": null,
+  "install_yr": "2010.0",
+  "date_last_": "2017-10-18",
+  "time_last_": "15:54:08.000",
+  "last_edite": "JENWONG",
+  "length": "0.01",
+  "notes": null,
+  "number": "65",
+  "objectid": "4056.0",
+  "qtr": "0.0",
+  "raised": "NO",
+  "shape_len": "35.624799522670095",
+  "sharrow": "0.0",
+  "sm_sweeper": "NO",
+  "street": null,
+  "streetname": "LAGUNA HONDA BLVD",
+  "surface_tr": null,
+  "symbology": "BIKE LANE",
+  "to_st": "MERCED AV",
+  "update_mo": null,
+  "update_yr": "0.0",
+  "geom": "MULTILINESTRING ((-122.458728517664 37.746755430012, -122.458661449047 37.746673365426))",
+  "dist": 0.00506722
+}
 ```
 
 **request:**
@@ -35,7 +76,48 @@ curl -XGET https://lane-breach.herokuapp.com/api/bikeway_networks/4150
 
 **response:**
 ```
-{"id":4150,"install_mo":null,"install_yr":"2003.0","symbology":"BIKE LANE","streetname":"14TH ST"}
+{
+  "id": 648,
+  "barrier": null,
+  "biap": "NO",
+  "buffered": "NO",
+  "cnn": "7992201.0",
+  "contraflow": "NO",
+  "date_creat": null,
+  "time_creat": null,
+  "created_us": null,
+  "dir": null,
+  "direct": "2W",
+  "double": "1.0",
+  "facility_t": "CLASS II",
+  "from_st": "WOODSIDE AV",
+  "fy": "0.0",
+  "globalid": "{BB75CA5B-E5CC-4D8A-86B6-F8FB936A34F1}",
+  "greenwave": "NO",
+  "install_mo": null,
+  "install_yr": "2010.0",
+  "date_last_": "2017-10-18",
+  "time_last_": "15:54:08.000",
+  "last_edite": "JENWONG",
+  "length": "0.01",
+  "notes": null,
+  "number": "65",
+  "objectid": "4056.0",
+  "qtr": "0.0",
+  "raised": "NO",
+  "shape_len": "35.624799522670095",
+  "sharrow": "0.0",
+  "sm_sweeper": "NO",
+  "street": null,
+  "streetname": "LAGUNA HONDA BLVD",
+  "surface_tr": null,
+  "symbology": "BIKE LANE",
+  "to_st": "MERCED AV",
+  "update_mo": null,
+  "update_yr": "0.0",
+  "geom": "MULTILINESTRING ((-122.458728517664 37.746755430012, -122.458661449047 37.746673365426))",
+  "dist": 0.00506722
+}
 ```
 
 ### SF 311 Cases

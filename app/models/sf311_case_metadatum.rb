@@ -24,7 +24,7 @@ class Sf311CaseMetadatum < ApplicationRecord
   belongs_to :bikeway_network
 
   def self.update_metadata(sf311_case)
-    bikeway_network = BikewayNetwork.nearest(sf311_case.lat, sf311_case.long).first
+    bikeway_network = BikewayNetwork.nearest(sf311_case.lat, sf311_case.long, 50).first
     return unless bikeway_network.present?
 
     if sf311_case.sf311_case_metadatum.present?

@@ -10,7 +10,7 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :order_by, types.String, 'Column to order the results by', as: :order_by, default_value: :requested_datetime
 
     resolve -> (obj, args, ctx) {
-      lane_blockages_query = Sf311Case.bike_lane_blockage.includes(:sf311_case_metadatum)
+      lane_blockages_query = Sf311Case.includes(:sf311_case_metadatum)
 
       if args[:start_time]
         lane_blockages_query =
@@ -32,7 +32,8 @@ Types::QueryType = GraphQL::ObjectType.define do
 
     argument :lat, !types.Float
     argument :long, !types.Float
+    argument :max_distance, types.Float
 
-    resolve -> (obj, args, ctx) { BikewayNetwork.nearest(args[:lat], args[:long]) }
+    resolve -> (obj, args, ctx) { BikewayNetwork.nearest(args[:lat], args[:long], args[:max_distance]) }
   end
 end
