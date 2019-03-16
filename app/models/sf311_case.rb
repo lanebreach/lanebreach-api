@@ -69,6 +69,7 @@ class Sf311Case < ApplicationRecord
       # one for the case metadata record)
       CSV.parse(case_data_csv, headers: true) do |row|
         Sf311Case.create!(row.to_h)
+        sleep 1
       end
     end
   end
