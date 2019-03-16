@@ -6,6 +6,7 @@
 #  address                         :string
 #  agency_responsible              :string
 #  closed_date                     :datetime
+#  description                     :string
 #  lat                             :float
 #  long                            :float
 #  media_url                       :string
@@ -44,6 +45,7 @@ class Sf311Case < ApplicationRecord
 
   validates :service_request_id, uniqueness: true
 
+  before_create :add_description
   after_create :add_metadata
 
   SERVICE_SUBTYPES = {
@@ -52,6 +54,12 @@ class Sf311Case < ApplicationRecord
 
   def add_metadata
     Sf311CaseMetadatum.update_metadata(self)
+  end
+
+  def add_description
+    data = Net::HTTP.get(URI("http://mobile311.sfgov.org/open311/v2/requests/#{service_request_id}.json"))
+    json = JSON.parse(data)
+    self.description = json[0]['description']
   end
 
   class << self

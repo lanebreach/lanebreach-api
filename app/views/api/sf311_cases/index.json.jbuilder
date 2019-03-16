@@ -9,7 +9,7 @@ end
 json.data @lane_blockages do |lane_blockage|
   json.extract! lane_blockage, :id, :service_request_id, :requested_datetime, :closed_date, :updated_datetime, :status_description,
   :status_notes, :agency_responsible, :service_name, :service_subtype, :service_details, :address, :supervisor_district,
-  :neighborhoods_sffind_boundaries, :police_district, :lat, :long, :source, :media_url
+  :neighborhoods_sffind_boundaries, :police_district, :lat, :long, :source, :media_url, :description, :street
   
   if lane_blockage.sf311_case_metadatum.present?
     json.meta_data do
