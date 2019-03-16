@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_12_224143) do
+ActiveRecord::Schema.define(version: 2019_03_16_195643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,6 +93,7 @@ ActiveRecord::Schema.define(version: 2018_12_12_224143) do
     t.string "media_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "street"
     t.index ["requested_datetime"], name: "index_sf311_cases_on_requested_datetime"
     t.index ["service_request_id"], name: "index_sf311_cases_on_service_request_id", unique: true
   end

@@ -1,5 +1,5 @@
 class Api::Sf311CaseMetadataController < ApplicationController
   def index
-    render json: {'Status': "Okay!"}, status: :ok
+    render json: { status: "ok" }, status: :ok
   end
 end
