@@ -24,6 +24,7 @@
 #  source                          :string
 #  status_description              :string
 #  status_notes                    :string
+#  street                          :string
 #  supervisor_district             :integer
 #  updated_datetime                :datetime
 #  created_at                      :datetime         not null
