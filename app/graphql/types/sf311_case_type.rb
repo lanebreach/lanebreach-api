@@ -5,6 +5,7 @@ Types::Sf311CaseType = GraphQL::ObjectType.define do
   field :address, types.String
   field :agency_responsible, types.String
   field :closed_date, Types::DateTimeType
+  field :description, types.String
   field :lat, !types.Float
   field :long, !types.Float
   field :media_url, types.String
@@ -23,6 +24,7 @@ Types::Sf311CaseType = GraphQL::ObjectType.define do
   field :source, !types.String
   field :status_description, types.String
   field :status_notes, types.String
+  field :street, types.String
   field :supervisor_district, types.Int
   field :updated_datetime, Types::DateTimeType
 
