@@ -16,7 +16,7 @@ class Api::Sf311CasesController < ApplicationController
 
       render :show
     else
-      render json: { 'Error': 'Error creating new 311 case' }, status: :unprocessable_entity
+      render json: { error: 'Error creating new 311 case' }, status: :unprocessable_entity
     end
   end
 
