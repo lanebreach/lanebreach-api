@@ -12,7 +12,7 @@ class IngestLatestBlockedLaneCasesWorker
     #    timestamp + 1 minute and the current date:
     blocked_lane_cases_csv =
       Sf311CaseService.get_blocked_bike_lane_case_data(
-        from_datetime: most_recent_case_timestamp + 1.minute,
+        from_datetime: most_recent_case_timestamp + 1.second,
         format: :csv
       )
 
