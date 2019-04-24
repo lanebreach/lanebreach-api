@@ -199,6 +199,52 @@ curl -XPOST https://lane-breach.herokuapp.com/api/sf311_cases -H "Content-Type: 
 TBD
 ```
 
+### SF MTA Ridership Counts
+
+#### GET /api/sf_mta_ridership_counts
+
+**request:**
+```
+curl -XGET https://lane-breach.herokuapp.com/api/sf_mta_ridership_counts?year_of_collection_time=2016&day=weekday&order_by=total_bike_count
+```
+
+Supported query string parameters include `year_of_collection_time`, `month_of_collection_time`, `hour_of_collection_time`, `total_bike_count`, `counter_location` and `days`. See the example API response for the expected value types for these parameters.
+
+When an `order_by` parameter is specified, a `sort_order` (asc or desc) can also be included.
+
+**response:**
+```
+{
+  "meta": {
+    "current_page": 1,
+    "next_page": 2,
+    "prev_page": null,
+    "total_pages": 1800,
+    "total_count": 54000,
+    "items_per_page": 30
+  },
+  "data": [
+    {
+      "counter_location": "17th St East of Hoff St",
+      "days": "WEEKDAY",
+      "hour_of_collection_time": 10,
+      "month_of_collection_time": "February",
+      "year_of_collection_time": 2016,
+      "total_bike_count": 998
+    },
+    {
+      "counter_location": "Polk St South of Sutter St",
+      "days": "WEEKDAY",
+      "hour_of_collection_time": 20,
+      "month_of_collection_time": "February",
+      "year_of_collection_time": 2016,
+      "total_bike_count": 998
+    },
+    ...
+  ]
+}
+```
+
 ## GraphQL API Endpoints
 
 If you haven't used GraphQL before, be sure to skim through [the documentation](https://graphql.org/) so you can hit the ground running.
@@ -234,6 +280,8 @@ The simplest way to run and test GraphQL queries is to use the [GraphiQL interfa
   }
 }
 ```
+
+### SF 311 Cases
 
 #### Fetch the first 5 cases that took place between April and October 2018
 
@@ -327,6 +375,65 @@ The simplest way to run and test GraphQL queries is to use the [GraphiQL interfa
             "sf311_case_metadatum": {
               "bikeway_network_id": 1563
             }
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
+### SF MTA Ridership Counts
+
+#### Fetch the location, bike count year and month of the top 3 ridership count records
+
+**request**:
+```
+{
+  sf_mta_ridership_counts_connection(order_by: total_bike_count, first: 3) {
+    totalCount
+    
+    edges {
+      node {
+        total_bike_count
+        counter_location
+        year_of_collection_time
+        month_of_collection_time        
+      }
+    }	
+  }
+}
+```
+
+**response**:
+```
+{
+  "data": {
+    "sf_mta_ridership_counts_connection": {
+      "totalCount": 108816,
+      "edges": [
+        {
+          "node": {
+            "total_bike_count": 998,
+            "counter_location": "17th St East of Hoff St",
+            "year_of_collection_time": 2016,
+            "month_of_collection_time": "February"
+          }
+        },
+        {
+          "node": {
+            "total_bike_count": 998,
+            "counter_location": "JFK West of Conservatory Dr. West",
+            "year_of_collection_time": 2017,
+            "month_of_collection_time": "June"
+          }
+        },
+        {
+          "node": {
+            "total_bike_count": 998,
+            "counter_location": "Marina Bike Path East of Baker St.",
+            "year_of_collection_time": 2017,
+            "month_of_collection_time": "October"
           }
         }
       ]
