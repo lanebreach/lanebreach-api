@@ -10,6 +10,8 @@ class IngestLatestBlockedLaneCasesWorker
 
     # 2. Fetch all blocked bike lane cases between the above
     #    timestamp + 1 minute and the current date:
+    Rails.logger.info("Fetching blocked bike lanes cases created since #{most_recent_case_timestamp}")
+
     blocked_lane_cases_csv =
       Sf311CaseService.get_blocked_bike_lane_case_data(
         from_datetime: most_recent_case_timestamp + 1.second,
@@ -18,5 +20,7 @@ class IngestLatestBlockedLaneCasesWorker
 
     # 3. Ingest the records retrieved in step 2:
     Sf311Case.ingest_csv_case_data!(blocked_lane_cases_csv)
+
+    Rails.logger.info("Successfully updated 311 cases")
   end
 end
