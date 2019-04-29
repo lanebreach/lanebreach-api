@@ -19,8 +19,8 @@ class IngestLatestBlockedLaneCasesWorker
       )
 
     # 3. Ingest the records retrieved in step 2:
-    Sf311Case.ingest_csv_case_data!(blocked_lane_cases_csv)
+    num_ingested_cases = Sf311Case.ingest_csv_case_data!(blocked_lane_cases_csv)
 
-    Rails.logger.info("Successfully updated 311 cases")
+    Rails.logger.info("Ingested #{num_ingested_cases} SF 311 cases")
   end
 end
