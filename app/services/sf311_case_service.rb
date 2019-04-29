@@ -61,7 +61,7 @@ module Sf311CaseService
 
     request_params['$where'] = query_conditions.join(' and ') if query_conditions
 
-    client.get("#{CASE_DATASET_ID}.#{format}", request_params)
+    client.get("#{CASE_DATASET_ID}.#{format}", request_params).body
   end
 
 end

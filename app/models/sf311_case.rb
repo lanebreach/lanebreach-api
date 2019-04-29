@@ -67,10 +67,17 @@ class Sf311Case < ApplicationRecord
       # TODO: Figure out a more efficient way to import case records. Currently,
       # each record takes 2 SQL statements to create (1 for the record itself,
       # one for the case metadata record)
+      num_imported_cases = 0
+
       CSV.parse(case_data_csv, headers: true) do |row|
         Sf311Case.create!(row.to_h)
-        sleep 1
+        num_imported_cases += 1
+
+        # Sleep for a second to limit the number of requests made by the Sf311Case#add_description callback:
+        sleep(1)
       end
+
+      num_imported_cases
     end
   end
 end
