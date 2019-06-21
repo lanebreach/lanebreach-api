@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_050730) do
+ActiveRecord::Schema.define(version: 2019_06_21_183934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 2019_06_21_050730) do
     t.decimal "update_mo"
     t.decimal "update_yr"
     t.geometry "geom", limit: {:srid=>4326, :type=>"multi_line_string"}
+  end
+
+  create_table "case_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.jsonb "meta"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_case_requests_on_user_id"
   end
 
   create_table "sf311_case_metadata", force: :cascade do |t|
@@ -123,6 +131,7 @@ ActiveRecord::Schema.define(version: 2019_06_21_050730) do
     t.index ["token"], name: "index_users_on_token", unique: true
   end
 
+  add_foreign_key "case_requests", "users"
   add_foreign_key "sf311_case_metadata", "bikeway_networks"
   add_foreign_key "sf311_case_metadata", "sf311_cases"
 end

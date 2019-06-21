@@ -1,0 +1,1 @@
+json.array! @case_requests, :user_id, :case_request_count
