@@ -19,4 +19,8 @@ class ApplicationController < ActionController::API
   def missing_parameters
     render json: { error: 'Sorry, you are missing parameters.' }, status: :unprocessable_entity
   end
+
+  def render_errors(record)
+    render json: { error: record.errors.full_messages.to_sentence }, status: :unprocessable_entity
+  end
 end
