@@ -9,7 +9,7 @@
     "build": "docker-compose -f docker-compose.yml build",
     "build:db": "docker build -t lbdb ./db/",
     "db": "docker exec -it lbdb bash -c 'psql bikelanes bikelanes'",
-    "db:reset": "docker-compose -f docker-compose.yml run lbapi bash -c 'rails db:environment:set RAILS_ENV=development && bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:migrate && bundle exec rake db:seed'",
+    "db:reset": "docker-compose -f docker-compose.yml run lbapi bash -c 'rails db:environment:set RAILS_ENV=development db:drop db:create db:migrate && rails db:seed'",
     "db:migrate": "docker-compose -f docker-compose.yml run lbapi bash -c 'rails db:migrate RAILS_ENV=development'",
     "db:run": "docker run --name lbdb lbdb",
     "db:seed": "docker-compose -f docker-compose.yml run lbapi bash -c 'rails db:seed RAILS_ENV=development'",
