@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API 
+  include ActionController::HttpAuthentication::Basic::ControllerMethods
+  include ActionController::HttpAuthentication::Token::ControllerMethods
+
   rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
@@ -22,5 +25,11 @@ class ApplicationController < ActionController::API
 
   def render_errors(record)
     render json: { error: record.errors.full_messages.to_sentence }, status: :unprocessable_entity
+  end
+
+  def authenticate!
+    authenticate_or_request_with_http_token do |token, options|
+      return true if token == ENV['AUTH_TOKEN']
+    end
   end
 end

@@ -2,6 +2,31 @@
 
 ## REST API Endpoints
 
+### Users
+
+All user actions require for an Authorization Token to be set.
+
+#### GET /api/users/1
+
+**request:**
+```
+curl -XGET localhost:3000/api/users/1 -H "Authorization:Token token=lanebreach"
+```
+
+#### POST /api/users
+
+**request:**
+```
+curl -XPOST localhost:3000/api/users -d '{"user": {"email": "sda@gmail.comz"}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
+```
+
+#### PUT /api/users/1
+
+**request:**
+```
+curl -XPUT localhost:3000/api/users/1 -d '{"user": {"email": "sda@gmail.comz"}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
+```
+
 ### Bikeway Networks
 
 #### GET /api/bikeway_networks

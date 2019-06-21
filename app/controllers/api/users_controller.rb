@@ -1,4 +1,6 @@
 class Api::UsersController < ApplicationController
+  before_action :authenticate!
+
   def show
     @user = User.find(params[:id])
   end
