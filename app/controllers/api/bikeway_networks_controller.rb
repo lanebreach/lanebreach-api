@@ -6,12 +6,46 @@ class Api::BikewayNetworksController < ApplicationController
     query ="query 
         { 
           nearest_bikeway_network(lat: #{params[:lat]}, long: #{params[:long]}, max_distance: #{params[:max_distance]}) {
-            id,
+            barrier, 
+            biap, 
+            buffered, 
+            cnn,
+            contraflow, 
+            created_us, 
+            dir, 
+            direct, 
+            dist,
+            double,
+            facility_t, 
+            from_st, 
+            fy,
+            geom,
+            globalid, 
+            greenwave, 
+            id
             install_mo,
             install_yr,
-            streetname,
+            last_edite, 
+            length,
+            notes, 
+            number, 
+            objectid,
+            qtr,
+            raised,
+            shape_len,
+            sharrow,
+            sm_sweeper, 
+            street, 
+            streetname, 
+            surface_tr, 
             symbology, 
-            dist
+            time_creat, 
+            time_last_, 
+            to_st, 
+            update_mo,
+            update_yr,
+            date_creat,
+            date_last_
           }
         }"
     result = LanebreachApiSchema.execute(query)

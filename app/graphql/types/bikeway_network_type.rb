@@ -19,14 +19,14 @@ Types::BikewayNetworkType = GraphQL::ObjectType.define do
   field :geom, Types::PointType
   field :globalid, types.String
   field :greenwave, types.String
-  field :id, types.Float
-  field :install_mo, types.Float
-  field :install_yr, types.Float
+  field :id, types.Int
+  field :install_mo, types.Int
+  field :install_yr, types.Int
   field :last_edite, types.String
   field :length, types.Float
   field :notes, types.String
   field :number, types.String
-  field :objectid, types.Float
+  field :objectid, types.Int
   field :qtr, types.Float
   field :raised, types.Float
   field :shape_len, types.Float
@@ -39,8 +39,8 @@ Types::BikewayNetworkType = GraphQL::ObjectType.define do
   field :time_creat, types.String
   field :time_last_, types.String
   field :to_st, types.String
-  field :update_mo, types.Float
-  field :update_yr, types.Float  
+  field :update_mo, types.Int
+  field :update_yr, types.Int  
 
   field :sf311_case_metadatum, Types::Sf311CaseMetadatumType
 end
