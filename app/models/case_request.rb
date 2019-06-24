@@ -18,22 +18,11 @@
 #
 
 class CaseRequest < ApplicationRecord
-  class InvalidPeriod < StandardError; end
   belongs_to :user
 
-  def self.get_count_by_period(period = '7_DAY')
-    scope = case period
-    when '1_DAY'
-      CaseRequest.where(created_at: 1.day.ago..Time.current)
-    when '7_DAY'
-      CaseRequest.where(created_at: 7.days.ago..Time.current)
-    when '30_DAY'
-      CaseRequest.where(created_at: 30.days.ago..Time.current)
-    when 'ALL'
-      CaseRequest
-    else
-      raise InvalidPeriod
-    end
-    scope = scope.group(:user_id).select(:user_id, 'count(*) as case_request_count').order(case_request_count: :desc)
+  def self.get_count(days_back = 0)
+    days_back = days_back.to_i
+    scope = days_back > 0 ? CaseRequest.where(created_at: days_back.days.ago..Time.current) : CaseRequest      
+    scope.group(:user_id).select(:user_id, 'count(*) as case_request_count').order(case_request_count: :desc).includes(:user)
   end
 end

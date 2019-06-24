@@ -50,12 +50,12 @@ All case request actions require for an Authorization Token to be set.
 
 **request:**
 ```
-curl -XGET localhost:3000/api/case_requests?period=7_DAY -H "Authorization:Token token=lanebreach"
+curl -XGET localhost:3000/api/case_requests?days_back=0 -H "Authorization:Token token=lanebreach"
 ```
 
 **response:**
 ```
-[{"user_id":2,"case_request_count":4},{"user_id":1,"case_request_count":1}]
+[{"user_id":2,"user_handle":null,"case_request_count":5},{"user_id":1,"user_handle":"sda","case_request_count":1}]
 ```
 
 #### POST /api/case_requests

@@ -1,9 +1,8 @@
 class Api::CaseRequestsController < ApplicationController
   before_action :authenticate!
-  rescue_from CaseRequest::InvalidPeriod, with: :missing_parameters
 
   def index
-    @case_requests = CaseRequest.get_count_by_period(params[:period])
+    @case_requests = CaseRequest.get_count(params[:days_back])
   end
 
   def create
