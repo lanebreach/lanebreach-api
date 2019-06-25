@@ -1,4 +1,5 @@
 require 'sidekiq/web'
+require 'sidekiq/cron/web'
 
 unless Rails.env.development?
   Sidekiq::Web.use Rack::Auth::Basic do |username, password|
