@@ -1,4 +1,3 @@
 ingest_latest_blocked_lane_cases:
-  cron: '0 5 * * *' # Daily at 5 AM
+  cron: '0 12 * * *' # Daily at 12 UTC
   class: IngestLatestBlockedLaneCasesWorker
-  queue: case_management
