@@ -5,5 +5,8 @@ class CreateSfDistricts < ActiveRecord::Migration[5.2]
     	t.string :supervisor_name
     	t.geometry :geom
     end
+
+    # Seed the SF districts table:
+    ActiveRecord::Base.connection.execute(IO.read(Rails.root.join('db', 'sql-files', 'sf_districts.sql')))
   end
 end
