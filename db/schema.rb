@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_11_041012) do
+ActiveRecord::Schema.define(version: 2019_06_06_025731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -97,6 +97,12 @@ ActiveRecord::Schema.define(version: 2019_04_11_041012) do
     t.string "description"
     t.index ["requested_datetime"], name: "index_sf311_cases_on_requested_datetime"
     t.index ["service_request_id"], name: "index_sf311_cases_on_service_request_id", unique: true
+  end
+
+  create_table "sf_districts", force: :cascade do |t|
+    t.string "district_name"
+    t.string "supervisor_name"
+    t.geometry "geom", limit: {:srid=>0, :type=>"geometry"}
   end
 
   create_table "sf_mta_ridership_counts", force: :cascade do |t|
