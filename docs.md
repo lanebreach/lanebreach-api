@@ -2,6 +2,74 @@
 
 ## REST API Endpoints
 
+### Users
+
+All user actions require for an Authorization Token to be set.
+
+#### GET /api/users/1
+
+**request:**
+```
+curl -XGET localhost:3000/api/users/1 -H "Authorization:Token token=lanebreach"
+```
+
+**response:**
+```
+{"id":2,"first_name":null,"last_name":null,"email":"sahil@gmail.com","token":"hmm","handle":"sda","created_at":"2019-06-21T07:21:49.247Z","updated_at":"2019-06-21T07:21:49.247Z"}
+```
+
+#### POST /api/users
+
+**request:**
+```
+curl -XPOST localhost:3000/api/users -d '{"user": {"email": "sda2@gmail.comz"}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
+```
+
+**response:**
+```
+{"id":2,"first_name":null,"last_name":null,"email":"sahil@gmail.com","token":"hmm","handle":"sda","created_at":"2019-06-21T07:21:49.247Z","updated_at":"2019-06-21T07:21:49.247Z"}
+```
+
+#### PUT /api/users/1
+
+**request:**
+```
+curl -XPUT localhost:3000/api/users/1 -d '{"user": {"email": "sda@gmail.comz"}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
+```
+
+**response:**
+```
+{"id":2,"first_name":null,"last_name":null,"email":"sahil@gmail.com","token":"hmm","handle":"sda","created_at":"2019-06-21T07:21:49.247Z","updated_at":"2019-06-21T07:21:49.247Z"}
+```
+
+### Case Requests
+
+All case request actions require for an Authorization Token to be set.
+
+#### GET /api/case_requests
+
+**request:**
+```
+curl -XGET localhost:3000/api/case_requests/counts?days_back=0 -H "Authorization:Token token=lanebreach"
+```
+
+**response:**
+```
+[{"user_id":2,"user_handle":null,"case_request_count":5},{"user_id":1,"user_handle":"sda","case_request_count":1}]
+```
+
+#### POST /api/case_requests
+
+**request:**
+```
+curl -XPOST localhost:3000/api/case_requests -d '{"case_request": {"user_id": 2}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
+```
+
+**response:**
+```
+{"id":3,"user_id":2,"meta":null,"created_at":"2019-06-21T19:30:23.837Z","updated_at":"2019-06-21T19:30:23.837Z"}
+```
+
 ### Bikeway Networks
 
 #### GET /api/bikeway_networks

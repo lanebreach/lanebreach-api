@@ -1,0 +1,1 @@
+json.merge! case_request.attributes

@@ -19,6 +19,7 @@ services:
     environment:
       RAILS_DATABASE_HOST: lbdb
       REDIS_URL: redis://redis:6379
+      AUTH_TOKEN: lanebreach
     volumes:
       - .:/lanebreach-api
     ports:
