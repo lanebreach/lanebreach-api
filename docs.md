@@ -22,7 +22,7 @@ curl -XGET localhost:3000/api/users/1 -H "Authorization:Token token=lanebreach"
 
 **request:**
 ```
-curl -XPOST localhost:3000/api/users -d '{"user": {"email": "sda@gmail.comz"}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
+curl -XPOST localhost:3000/api/users -d '{"user": {"email": "sda2@gmail.comz"}}' -H 'Content-Type: application/json' -H "Authorization:Token token=lanebreach"
 ```
 
 **response:**
@@ -50,7 +50,7 @@ All case request actions require for an Authorization Token to be set.
 
 **request:**
 ```
-curl -XGET localhost:3000/api/case_requests?days_back=0 -H "Authorization:Token token=lanebreach"
+curl -XGET localhost:3000/api/case_requests/counts?days_back=0 -H "Authorization:Token token=lanebreach"
 ```
 
 **response:**

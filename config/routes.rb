@@ -28,6 +28,9 @@ Rails.application.routes.draw do
     resources :bikeway_networks, only: [:index, :show]
     resources :sf_mta_ridership_counts, only: [:index]
     resources :users, only: [:show, :create, :update]
-    resources :case_requests, only: [:index, :create]
+    resources :case_requests, only: [:create] do
+      get :counts, on: :collection
+    end
+    
   end
 end

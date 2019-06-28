@@ -1,7 +1,7 @@
 class Api::CaseRequestsController < ApplicationController
   before_action :authenticate!
 
-  def index
+  def counts
     @case_requests = CaseRequest.get_count(params[:days_back])
   end
 
