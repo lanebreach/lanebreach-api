@@ -17,9 +17,9 @@ json.data @lane_blockages do |lane_blockage|
                 :police_district, :lat, :long, :source, :media_url,
                 :description, :street
   
-  if lane_blockage.sf311_case_metadatum.present?
+  if lane_blockage.bikeway_network_id.present?
     json.meta_data do
-      json.bikeway_network_id lane_blockage.sf311_case_metadatum.bikeway_network_id
+      json.bikeway_network_id lane_blockage.bikeway_network_id
     end
   else
     json.meta_data nil

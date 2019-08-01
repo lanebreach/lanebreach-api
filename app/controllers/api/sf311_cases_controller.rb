@@ -1,6 +1,9 @@
 class Api::Sf311CasesController < ApplicationController
   def index
-    @lane_blockages = Sf311Case.includes(:sf311_case_metadatum)
+    @lane_blockages =
+      Sf311Case
+        .left_outer_joins(:sf311_case_metadatum)
+        .select('sf311_cases.*,sf311_case_metadata.*')
 
     if params[:start_time]
       @lane_blockages =
