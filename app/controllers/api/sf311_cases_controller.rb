@@ -12,11 +12,13 @@ class Api::Sf311CasesController < ApplicationController
         @lane_blockages.where('requested_datetime <= ?', params[:end_time])
     end
 
-    @lane_blockages =
-      @lane_blockages.paginate(
-        page: (params[:page] || 1),
-        per_page: (params[:per_page] || 30)
-      )
+    if params[:page] || params[:per_page]
+      @lane_blockages =
+        @lane_blockages.paginate(
+          page: (params[:page] || 1),
+          per_page: (params[:per_page] || 30)
+        )
+    end
   end
 
   def create
