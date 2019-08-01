@@ -28,9 +28,15 @@ class Sf311CaseMetadatum < ApplicationRecord
     return unless bikeway_network.present?
 
     if sf311_case.sf311_case_metadatum.present?
-      sf311_case.sf311_case_metadatum.update!(bikeway_network: bikeway_network, sf311_case: sf311_case)
+      sf311_case.sf311_case_metadatum.update!(
+        bikeway_network: bikeway_network,
+        sf311_case: sf311_case
+      )
     else
-      Sf311CaseMetadatum.create!(bikeway_network: bikeway_network, sf311_case: sf311_case)
+      Sf311CaseMetadatum.create!(
+        bikeway_network: bikeway_network,
+        sf311_case: sf311_case
+      )
     end
   end
 end
