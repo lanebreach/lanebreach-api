@@ -15,7 +15,7 @@ class Api::Sf311CasesController < ApplicationController
         @lane_blockages.where('requested_datetime <= ?', params[:end_time])
     end
 
-    if params[:page] || params[:per_page]
+    unless params.has_key?(:skip_pagination)
       @lane_blockages =
         @lane_blockages.paginate(
           page: (params[:page] || 1),
