@@ -48,9 +48,10 @@ class BikewayNetwork < ApplicationRecord
 
   def self.nearest(lat, long, max_distance)
     max_distance ||= 50
-    BikewayNetwork.select("*, st_DistanceSphere(geom, ST_MakePoint(#{long}, #{lat})) as dist")
-                  .where("st_DistanceSphere(geom, ST_MakePoint(?, ?)) <= #{max_distance}", long, lat)
-                  .order('dist')
-                  .limit(1)
+    BikewayNetwork
+      .select("*, st_DistanceSphere(geom, ST_MakePoint(#{long}, #{lat})) as dist")
+      .where("st_DistanceSphere(geom, ST_MakePoint(?, ?)) <= #{max_distance}", long, lat)
+      .order('dist')
+      .limit(1)
   end
 end

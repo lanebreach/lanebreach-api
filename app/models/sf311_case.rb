@@ -73,7 +73,8 @@ class Sf311Case < ApplicationRecord
         Sf311Case.create!(row.to_h)
         num_imported_cases += 1
 
-        # Sleep for a second to limit the number of requests made by the Sf311Case#add_description callback:
+        # Sleep for a second to limit the number of requests made by the
+        # Sf311Case#add_description callback:
         sleep(1)
       end
 
