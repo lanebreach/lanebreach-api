@@ -1,11 +1,11 @@
-class ApplicationController < ActionController::API 
+class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
   rescue_from ActiveRecord::RecordNotUnique, with: :record_not_unique
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
   rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-  rescue_from ActionController::ParameterMissing, with: :missing_parameters   
+  rescue_from ActionController::ParameterMissing, with: :missing_parameters
 
   def render_unprocessable_entity_response(exception)
     render json: { error: exception.record.errors.full_messages.map { |error| error + "." }}, status: :unprocessable_entity

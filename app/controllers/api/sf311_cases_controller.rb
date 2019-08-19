@@ -7,6 +7,7 @@ class Api::Sf311CasesController < ApplicationController
   end
 
   def create
+    require 'pry'; binding.pry
     @sf311_case = Sf311Case.new(sf311_case_params)
 
     if @sf311_case.save

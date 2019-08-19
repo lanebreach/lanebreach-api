@@ -23,10 +23,10 @@ RSpec.describe Api::Sf311CasesController, type: :controller do
     it 'Creates a new Sf311Case' do
       # post :create, :params => { data }
 
-      # expect(Sf311Case.count).to eq 1
-      post :create, params: { dsf311_case: data, format: :json }
+      post :create, params: { sf311_case: data, format: :json }
 
       expect(response.content_type).to eq 'application/json'
+      expect(Sf311Case.count).to eq 1
     end
   end
 end
