@@ -14,6 +14,13 @@ development:
   database: bikelanes
   password: bike_pass
 
+test:
+  <<: *default
+  password:
+  username: bikelanes
+  database: bikelanes
+  password: bike_pass
+
 production:
   adapter: postgis
   encoding: unicode
